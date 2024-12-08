@@ -1,0 +1,37 @@
+/*********************************************************************
+*                 (c) SEGGER Microcontroller GmbH                    *
+*                      The Embedded Experts                          *
+*                         www.segger.com                             *
+**********************************************************************
+                                                                      
+File          : STM32F446RE.jdebug
+Created       : 20 Nov 2020 13:44
+Ozone Version : V3.20c
+*/
+
+/*********************************************************************
+*                                                                     
+*       OnProjectLoad                                                 
+*                                                                     
+* Function description                                                
+*   Project load routine. Required.                                   
+*                                                                     
+**********************************************************************
+*/                                                                    
+void OnProjectLoad (void) {
+  //
+  // Dialog-generated settings
+  //
+  Project.SetTraceSource ("SWO");
+  Project.SetDevice ("STM32F446RE");
+  Project.SetHostIF ("USB", "");
+  Project.SetTargetIF ("SWD");
+  Project.SetTIFSpeed ("4 MHz");
+  Project.AddSvdFile ("$(InstallDir)/Config/CPU/Cortex-M4F.svd");
+  Project.AddSvdFile ("$(InstallDir)/Config/Peripherals/STM32F446.svd");
+  Project.SetJLinkScript("./STM32F446RE.JLinkScript");
+  File.Open("../Bin/NucleoOsek/NucleoOsek.elf");
+  //
+  // User settings
+  //
+}

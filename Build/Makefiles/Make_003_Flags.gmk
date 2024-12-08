@@ -1,0 +1,84 @@
+
+#####################################################################################
+# 
+# Filename    : Make_003_Flags.gmk
+# 
+# Author      : Chalandi Amine
+#
+# Owner       : Chalandi Amine
+# 
+# Date        : 30.01.2020
+# 
+# Description : GNU makefile
+# 
+#####################################################################################
+
+
+CFLAGS_CORE  = -mcpu=cortex-m4                         \
+               -mlittle-endian                         \
+               -mfloat-abi=hard                        \
+               -mfpu=fpv4-sp-d16                       \
+               -mthumb                                 \
+               -mtp=soft                               
+
+
+
+CFLAGS_OPT   = -O0                       \
+               -g
+
+
+ifeq ($(BUILD_NAME),Release)
+CFLAGS_OPT  := -O2
+endif
+
+WARNING_FLAGS := -Wsign-conversion                 \
+                 -Wunused-parameter                \
+                 -Wuninitialized                   \
+                 -Wmissing-declarations            \
+                 -Wshadow                          \
+                 -Wunreachable-code                \
+                 -Wmissing-include-dirs            \
+                 -Wzero-as-null-pointer-constant   \
+                 -Wall                             \
+                 -Wextra                           
+
+CFLAGS_BASE  =  -marm                             \
+                $(CFLAGS_OPT)                     \
+                $(CFLAGS_CORE)                    \
+                -fomit-frame-pointer              \
+                -gdwarf-2                         \
+                -fno-exceptions
+
+
+CFLAGS      :=  -x c                              \
+                -std=c99                          \
+                $(CFLAGS_BASE)
+
+
+CPPFLAGS    :=  $(CFLAGS_BASE)                    \
+                -x c++                            \
+                -std=c++11                        \
+                -fno-rtti                         \
+                -fstrict-enums                    \
+                -fno-use-cxa-atexit               \
+                -fno-use-cxa-get-exception-ptr    \
+                -fno-nonansi-builtins             \
+                -fno-threadsafe-statics           \
+                -fno-enforce-eh-specs             \
+                -ftemplate-depth=32               
+
+
+
+LFLAGS       =  -nostartfiles                     \
+                -nostdlib                         \
+                -Wl,--no-warn-rwx-segments        \
+                -Wl,--print-memory-usage          \
+                -Wl,--print-map-discarded         \
+                -Wl,-Map=$(MAP_FILE)
+
+
+ASFLAGS      =  -mcpu=cortex-m4                        \
+               -mlittle-endian                         \
+               -mfloat-abi=hard                        \
+               -mfpu=fpv4-sp-d16                       \
+               -mthumb                                 

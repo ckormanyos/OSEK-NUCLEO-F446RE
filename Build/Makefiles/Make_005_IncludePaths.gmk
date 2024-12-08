@@ -1,0 +1,23 @@
+
+#####################################################################################
+# 
+# Filename    : Make_005_IncludePaths.gmk
+# 
+# Author      : Chalandi Amine
+#
+# Owner       : Chalandi Amine
+# 
+# Date        : 30.01.2020
+# 
+# Description : GNU makefile
+# 
+#####################################################################################
+
+INC_FILES :=  $(SW_PATH)/Appli                          \
+              $(SW_PATH)/Mcal                           \
+              $(SW_PATH)/OSEK                           \
+              $(SW_PATH)/OSEK/HwPlatform/ARM/Cortex-M   \
+              $(SW_PATH)/Startup                        \
+              $(SW_PATH)/Std                            \
+              $(SW_PATH)/Mcal                           
+

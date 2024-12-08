@@ -1,0 +1,41 @@
+
+#####################################################################################
+# 
+# Filename    : Make_001_Paths.gmk
+# 
+# Author      : Chalandi Amine
+#
+# Owner       : Chalandi Amine
+# 
+# Date        : 30.01.2020
+# 
+# Description : GNU makefile
+# 
+#####################################################################################
+
+UTILITY_PATH   := $(SOLUTION_PATH)/Build/Utilities
+OUTPUT_PATH    := $(SOLUTION_PATH)/Bin/$(BUILD_NAME)
+
+SW_PATH        := $(SOLUTION_PATH)/Code
+LD_FILE        := $(SW_PATH)/Startup/Memory_Map.ld
+
+BIN_PATH       := $(SOLUTION_PATH)/Bin
+LST_PATH       := Bin/$(BUILD_NAME)/lst
+OBJ_PATH       := Bin/$(BUILD_NAME)/obj
+ERR_PATH       := Bin/$(BUILD_NAME)/err
+PRE_PATH       := Bin/$(BUILD_NAME)/pre
+
+OBJ_DIR        := $(OUTPUT_PATH)/obj
+
+
+ELF_FILE       := $(OUTPUT_PATH)/$(BUILD_NAME).elf
+MAP_FILE       := $(OUTPUT_PATH)/$(BUILD_NAME).map
+HEX_FILE       := $(basename $(subst /,\,$(ELF_FILE))).hex
+SREC_FILE      := $(basename $(subst /,\,$(ELF_FILE))).s19
+LIST_FILE      := $(basename $(subst /,\,$(ELF_FILE))).list
+DUMP_FILE      := $(basename $(subst /,\,$(ELF_FILE))).dump
+SYM_FILE       := $(basename $(subst /,\,$(ELF_FILE))).sym
+INFO_FILE      := $(basename $(subst /,\,$(ELF_FILE))).info
+
+
+

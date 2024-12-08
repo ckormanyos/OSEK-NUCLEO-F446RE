@@ -1,0 +1,33 @@
+
+#####################################################################################
+# 
+# Filename    : Make_002_Tools.gmk
+# 
+# Author      : Chalandi Amine
+#
+# Owner       : Chalandi Amine
+# 
+# Date        : 30.01.2020
+# 
+# Description : GNU makefile
+# 
+#####################################################################################
+
+DIRNAME      := $(UTILITY_PATH)/dirname
+GNUECHO      := $(UTILITY_PATH)/echo
+PWD          := $(UTILITY_PATH)/pwd
+MKDIR        := $(UTILITY_PATH)/mkdir
+RM           := $(UTILITY_PATH)/rm
+DEL          := del /s/f/q
+READELF      := $(UTILITY_PATH)/readelf/readelf
+ECHO_ERR     := $(UTILITY_PATH)/eprint
+
+
+GCC_ARM      := C:/Compilers/arm-none-eabi_13.3_rel1/bin
+CC           := $(GCC_ARM)/arm-none-eabi-gcc
+CPP          := $(GCC_ARM)/arm-none-eabi-g++
+LD           := $(GCC_ARM)/arm-none-eabi-gcc
+AS           := $(GCC_ARM)/arm-none-eabi-as
+GDUMP        := $(GCC_ARM)/arm-none-eabi-objdump
+GCOPY        := $(GCC_ARM)/arm-none-eabi-objcopy
+

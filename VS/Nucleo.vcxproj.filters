@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter  Include="Build">
+      <UniqueIdentifier>{00000000-0000-0000-0000-0000060b}</UniqueIdentifier> 
+    </Filter>
+    <Filter  Include="Code">
+      <UniqueIdentifier>{00000000-0000-0000-0000-000003e1}</UniqueIdentifier> 
+    </Filter>
+    <Filter  Include="Build\Makefiles">
+      <UniqueIdentifier>{00000000-0000-0000-0000-00003018}</UniqueIdentifier> 
+    </Filter>
+    <Filter  Include="Code\Appli">
+      <UniqueIdentifier>{00000000-0000-0000-0000-000015a9}</UniqueIdentifier> 
+    </Filter>
+    <Filter  Include="Code\Mcal">
+      <UniqueIdentifier>{00000000-0000-0000-0000-00001104}</UniqueIdentifier> 
+    </Filter>
+    <Filter  Include="Code\OSEK">
+      <UniqueIdentifier>{00000000-0000-0000-0000-00000e97}</UniqueIdentifier> 
+    </Filter>
+    <Filter  Include="Code\Services">
+      <UniqueIdentifier>{00000000-0000-0000-0000-00002506}</UniqueIdentifier> 
+    </Filter>
+    <Filter  Include="Code\Startup">
+      <UniqueIdentifier>{00000000-0000-0000-0000-000020a4}</UniqueIdentifier> 
+    </Filter>
+    <Filter  Include="Code\Std">
+      <UniqueIdentifier>{00000000-0000-0000-0000-00000deb}</UniqueIdentifier> 
+    </Filter>
+    <Filter  Include="Code\OSEK\HwPlatform">
+      <UniqueIdentifier>{00000000-0000-0000-0000-00005150}</UniqueIdentifier> 
+    </Filter>
+    <Filter  Include="Code\OSEK\HwPlatform\ARM">
+      <UniqueIdentifier>{00000000-0000-0000-0000-00006d08}</UniqueIdentifier> 
+    </Filter>
+    <Filter  Include="Code\OSEK\HwPlatform\Renesas">
+      <UniqueIdentifier>{00000000-0000-0000-0000-00009fa5}</UniqueIdentifier> 
+    </Filter>
+    <Filter  Include="Code\OSEK\HwPlatform\ARM\Cortex-M">
+      <UniqueIdentifier>{00000000-0000-0000-0000-0000cc0e}</UniqueIdentifier> 
+    </Filter>
+    <Filter  Include="Code\OSEK\HwPlatform\Renesas\F1x">
+      <UniqueIdentifier>{00000000-0000-0000-0000-0000c734}</UniqueIdentifier> 
+    </Filter>
+    <Filter  Include="Code\OSEK\HwPlatform\Renesas\F1x\R7F701035">
+      <UniqueIdentifier>{00000000-0000-0000-0000-00011e38}</UniqueIdentifier> 
+    </Filter>
+    <Filter  Include="Code\OSEK\HwPlatform\Renesas\F1x\R7F701581">
+      <UniqueIdentifier>{00000000-0000-0000-0000-00011f25}</UniqueIdentifier> 
+    </Filter>
+    <Filter  Include="Code\OSEK\HwPlatform\Renesas\F1x\R7F701035\Cfg">
+      <UniqueIdentifier>{00000000-0000-0000-0000-00015da0}</UniqueIdentifier> 
+    </Filter>
+    <Filter  Include="Code\OSEK\HwPlatform\Renesas\F1x\R7F701581\Cfg">
+      <UniqueIdentifier>{00000000-0000-0000-0000-00015e8d}</UniqueIdentifier> 
+    </Filter>
+    <Filter  Include="Code\Services\FIFO">
+      <UniqueIdentifier>{00000000-0000-0000-0000-00003cec}</UniqueIdentifier> 
+    </Filter>
+    <Filter  Include="Code\Services\IPC">
+      <UniqueIdentifier>{00000000-0000-0000-0000-000037c8}</UniqueIdentifier> 
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Code\Appli\main.c">
+      <Filter>Code\Appli</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Code\Appli\Rect.cpp">
+      <Filter>Code\Appli</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Code\Appli\tasks.c">
+      <Filter>Code\Appli</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Code\Mcal\Clock.c">
+      <Filter>Code\Mcal</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Code\Mcal\Cpu.c">
+      <Filter>Code\Mcal</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Code\Mcal\math.asm">
+      <Filter>Code\Mcal</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Code\Mcal\port.c">
+      <Filter>Code\Mcal</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Code\Mcal\SysTimer.c">
+      <Filter>Code\Mcal</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Code\OSEK\OsAlarm.c">
+      <Filter>Code\OSEK</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Code\OSEK\OsCore.c">
+      <Filter>Code\OSEK</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Code\OSEK\OsEvt.c">
+      <Filter>Code\OSEK</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Code\OSEK\OsSched.c">
+      <Filter>Code\OSEK</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Code\OSEK\OsTask.c">
+      <Filter>Code\OSEK</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Code\OSEK\OsTcb.c">
+      <Filter>Code\OSEK</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Code\OSEK\HwPlatform\ARM\Cortex-M\OsAsm.s">
+      <Filter>Code\OSEK\HwPlatform\ARM\Cortex-M</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Code\OSEK\HwPlatform\ARM\Cortex-M\OsHwPltfm.c">
+      <Filter>Code\OSEK\HwPlatform\ARM\Cortex-M</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Code\OSEK\HwPlatform\ARM\Cortex-M\OsHwSchedPrio.s">
+      <Filter>Code\OSEK\HwPlatform\ARM\Cortex-M</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Code\OSEK\HwPlatform\Renesas\HwPltfm.c">
+      <Filter>Code\OSEK\HwPlatform\Renesas</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Code\OSEK\HwPlatform\Renesas\OsAsm.c">
+      <Filter>Code\OSEK\HwPlatform\Renesas</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Code\OSEK\HwPlatform\Renesas\OsHwSchedPrio.s">
+      <Filter>Code\OSEK\HwPlatform\Renesas</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Code\OSEK\HwPlatform\Renesas\Ostm.c">
+      <Filter>Code\OSEK\HwPlatform\Renesas</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Code\OSEK\HwPlatform\Renesas\F1x\R7F701035\Cfg\osGenEIINTx.c">
+      <Filter>Code\OSEK\HwPlatform\Renesas\F1x\R7F701035\Cfg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Code\OSEK\HwPlatform\Renesas\F1x\R7F701581\Cfg\osGenEIINTx.c">
+      <Filter>Code\OSEK\HwPlatform\Renesas\F1x\R7F701581\Cfg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Code\Services\FIFO\FIFO.c">
+      <Filter>Code\Services\FIFO</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Code\Services\IPC\IPC.c">
+      <Filter>Code\Services\IPC</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Code\Startup\IntVect.c">
+      <Filter>Code\Startup</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Code\Startup\nomain.c">
+      <Filter>Code\Startup</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Code\Startup\Startup.c">
+      <Filter>Code\Startup</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Code\Appli\Rect.h">
+      <Filter>Code\Appli</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Code\Mcal\Gpio.h">
+      <Filter>Code\Mcal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Code\Mcal\scb.h">
+      <Filter>Code\Mcal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Code\Mcal\STM32F446RE_Reg.h">
+      <Filter>Code\Mcal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Code\OSEK\OsAPIs.h">
+      <Filter>Code\OSEK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Code\OSEK\OsGenMac.h">
+      <Filter>Code\OSEK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Code\OSEK\OsInternal.h">
+      <Filter>Code\OSEK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Code\OSEK\OsTcb.h">
+      <Filter>Code\OSEK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Code\OSEK\OsTypes.h">
+      <Filter>Code\OSEK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Code\OSEK\Platform_Types.h">
+      <Filter>Code\OSEK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Code\OSEK\HwPlatform\ARM\Cortex-M\OsAsm.h">
+      <Filter>Code\OSEK\HwPlatform\ARM\Cortex-M</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Code\OSEK\HwPlatform\ARM\Cortex-M\OsGenCfg.h">
+      <Filter>Code\OSEK\HwPlatform\ARM\Cortex-M</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Code\OSEK\HwPlatform\ARM\Cortex-M\OsGenPrioTypes.h">
+      <Filter>Code\OSEK\HwPlatform\ARM\Cortex-M</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Code\OSEK\HwPlatform\ARM\Cortex-M\OsHwPltfm.h">
+      <Filter>Code\OSEK\HwPlatform\ARM\Cortex-M</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Code\OSEK\HwPlatform\Renesas\HwPltfm.h">
+      <Filter>Code\OSEK\HwPlatform\Renesas</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Code\OSEK\HwPlatform\Renesas\OsAsm.h">
+      <Filter>Code\OSEK\HwPlatform\Renesas</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Code\OSEK\HwPlatform\Renesas\F1x\R7F701035\Cfg\osGenCfg.h">
+      <Filter>Code\OSEK\HwPlatform\Renesas\F1x\R7F701035\Cfg</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Code\OSEK\HwPlatform\Renesas\F1x\R7F701035\Cfg\osGenPrioTypes.h">
+      <Filter>Code\OSEK\HwPlatform\Renesas\F1x\R7F701035\Cfg</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Code\OSEK\HwPlatform\Renesas\F1x\R7F701581\Cfg\osGenCfg.h">
+      <Filter>Code\OSEK\HwPlatform\Renesas\F1x\R7F701581\Cfg</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Code\OSEK\HwPlatform\Renesas\F1x\R7F701581\Cfg\osGenPrioTypes.h">
+      <Filter>Code\OSEK\HwPlatform\Renesas\F1x\R7F701581\Cfg</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Code\Services\FIFO\FIFO.h">
+      <Filter>Code\Services\FIFO</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Code\Services\IPC\IPC.h">
+      <Filter>Code\Services\IPC</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Code\Std\Platform_Types.h">
+      <Filter>Code\Std</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Build\Makefiles\Make_000_Build.gmk">
+      <Filter>Build\Makefiles</Filter>
+    </None>
+    <None Include="..\Build\Makefiles\Make_001_Paths.gmk">
+      <Filter>Build\Makefiles</Filter>
+    </None>
+    <None Include="..\Build\Makefiles\Make_002_Tools.gmk">
+      <Filter>Build\Makefiles</Filter>
+    </None>
+    <None Include="..\Build\Makefiles\Make_003_Flags.gmk">
+      <Filter>Build\Makefiles</Filter>
+    </None>
+    <None Include="..\Build\Makefiles\Make_004_SourceFiles.gmk">
+      <Filter>Build\Makefiles</Filter>
+    </None>
+    <None Include="..\Build\Makefiles\Make_005_IncludePaths.gmk">
+      <Filter>Build\Makefiles</Filter>
+    </None>
+    <None Include="..\Build\Makefiles\Make_006_Rules.gmk">
+      <Filter>Build\Makefiles</Filter>
+    </None>
+    <None Include="..\Code\Startup\Memory_Map.ld">
+      <Filter>Code\Startup</Filter>
+    </None>
+  </ItemGroup>
+</Project>

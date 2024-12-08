@@ -1,0 +1,38 @@
+
+#####################################################################################
+# 
+# Filename    : Make_004_SourceFiles.gmk
+# 
+# Author      : Chalandi Amine
+#
+# Owner       : Chalandi Amine
+# 
+# Date        : 30.01.2020
+# 
+# Description : GNU makefile
+# 
+#####################################################################################
+
+
+OSEK_FILES := $(SW_PATH)/OSEK/OsTcb                                  \
+              $(SW_PATH)/OSEK/OsCore                                 \
+              $(SW_PATH)/OSEK/OsAlarm                                \
+              $(SW_PATH)/OSEK/OsEvt                                  \
+              $(SW_PATH)/OSEK/OsSched                                \
+              $(SW_PATH)/OSEK/OsTask                                 \
+              $(SW_PATH)/OSEK/HwPlatform/ARM/Cortex-M/OsHwPltfm      \
+              $(SW_PATH)/OSEK/HwPlatform/ARM/Cortex-M/OsHwSchedPrio  \
+              $(SW_PATH)/OSEK/Stubs/OsAsm                            \
+              $(SW_PATH)/appli/main                                  \
+              $(SW_PATH)/appli/tasks                                 
+
+
+SRC_FILES :=  $(SW_PATH)/Mcal/SysTimer                               \
+              $(SW_PATH)/Mcal/Clock                                  \
+              $(SW_PATH)/Mcal/Cpu                                    \
+              $(SW_PATH)/Startup/IntVect                             \
+              $(SW_PATH)/Startup/Startup                             \
+              $(SW_PATH)/Startup/DummyClass                          \
+              $(OSEK_FILES)
+#              $(SW_PATH)/Startup/nomain                              \
+

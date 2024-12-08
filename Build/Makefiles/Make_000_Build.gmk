@@ -1,0 +1,70 @@
+
+#####################################################################################
+# 
+# Filename    : Make_000_Build.gmk
+# 
+# Author      : Chalandi Amine
+#
+# Owner       : Chalandi Amine
+# 
+# Date        : 30.01.2020
+# 
+# Description : GNU makefile
+# 
+#####################################################################################
+
+#####################################################################################
+# PATH
+#####################################################################################
+MAKEFILES_PATH := $(subst \,/,$(MAKEFILES_PATH))
+SOLUTION_PATH  := $(subst \,/,$(SOLUTION_PATH))
+
+#####################################################################################
+# Includes
+#####################################################################################
+include $(MAKEFILES_PATH)/Make_001_Paths.gmk
+include $(MAKEFILES_PATH)/Make_002_Tools.gmk
+include $(MAKEFILES_PATH)/Make_003_Flags.gmk
+include $(MAKEFILES_PATH)/Make_004_SourceFiles.gmk
+include $(MAKEFILES_PATH)/Make_005_IncludePaths.gmk
+
+#####################################################################################
+# VPATH
+#####################################################################################
+VPATH := $(subst \,/,$(sort $(dir $(SRC_FILES)) $(OBJ_DIR)))
+
+
+#####################################################################################
+# List of object files
+#####################################################################################
+FILES_O := $(addprefix $(OBJ_DIR)/, $(notdir $(addsuffix .o, $(SRC_FILES))))
+
+
+#####################################################################################
+# Preprocessing flag
+#####################################################################################
+PFLAGS       := -E
+FILES_i      := $(addprefix $(OBJ_DIR)/, $(notdir $(addsuffix .i, $(SRC_FILES))))
+
+#####################################################################################
+# Include dependency files
+#####################################################################################
+ifeq ($(MAKECMDGOALS),Build)
+-include $(subst .o,.d,$(FILES_O))
+endif
+
+#####################################################################################
+# Rules
+#####################################################################################
+PreRebuild     :  _Startup _Cleanup _Build
+PreBuild       :  _Startup _Build
+Rebuild        :  _Link
+Build          :  _Link
+PostRebuild    :  _PostBuild
+PostBuild      :  _PostBuild
+Clean          :  _Startup _Cleanup
+Preprocessing  :  _Preprocessing
+
+
+include $(MAKEFILES_PATH)/Make_006_Rules.gmk
+

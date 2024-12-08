@@ -1,0 +1,172 @@
+
+#####################################################################################
+# 
+# Filename    : Make_006_Rules.gmk
+# 
+# Author      : Chalandi Amine
+#
+# Owner       : Chalandi Amine
+# 
+# Date        : 30.01.2020
+# 
+# Description : GNU makefile
+# 
+#####################################################################################
+
+#####################################################################################
+# Rule to start the build process
+#####################################################################################
+.PHONY: _Startup
+_Startup:
+	@$(GNUECHO) +++ $(Configuration) ($(BUILD_TYPE)) +++
+	@$(GNUECHO) +++ Target CPU: $(TARGET_CPU) +++
+	@$(GNUECHO) +++ Output Directory
+	@$(GNUECHO) $(OUTPUT_PATH)
+	@$(GNUECHO) +++ VPATH Directory
+	@$(GNUECHO) $(subst /,\,$(VPATH))
+	@$(GNUECHO) +++ Solution Directory
+	@$(GNUECHO) $(subst /,\,$(SOLUTION_PATH))
+	@$(GNUECHO) +++ BIN Directory
+	@$(GNUECHO) $(subst /,\,$(BIN_PATH))
+	@$(GNUECHO) +++ LST Directory
+	@$(GNUECHO) $(subst /,\,$(LST_PATH))
+	@$(GNUECHO) +++ ERR Directory
+	@$(GNUECHO) $(subst /,\,$(ERR_PATH))
+	@$(GNUECHO) +++ OBJ Directory
+	@$(GNUECHO) $(subst /,\,$(OBJ_PATH))
+
+
+#####################################################################################
+# Rule to build the program
+#####################################################################################
+.PHONY: _Build
+_Build:
+	@$(GNUECHO) +++ Sources Files
+	@$(GNUECHO) $(subst /,\,$(SRC_FILES))
+	@$(GNUECHO) +++ Includes Files
+	@$(GNUECHO) $(addprefix -I, $(subst /,\,$(INC_FILES)))
+	@$(GNUECHO) +++ BIN Files
+	@$(GNUECHO) $(subst /,\,$(FILES_O))
+	@$(GNUECHO) +++ Compiler FLAGS
+	@$(GNUECHO) $(subst /,\,$(CFLAGS))
+	@$(GNUECHO) +++ Assembler FLAGS
+	@$(GNUECHO) $(subst /,\,$(ASFLAGS))
+	@$(GNUECHO) +++ Linker FLAGS
+	@$(GNUECHO) $(subst /,\,$(LFLAGS))
+	@if not exist $(subst /,\,$(OUTPUT_PATH)) $(MKDIR) -p $(subst /,\,$(OUTPUT_PATH)) $(MKDIR) -p $(LST_PATH) $(MKDIR) -p $(OBJ_DIR) $(MKDIR) -p $(ERR_PATH)
+
+#####################################################################################
+# Rule to clean the build
+#####################################################################################
+.PHONY: _Cleanup
+_Cleanup:
+	@$(GNUECHO) +++ Cleaning up all
+	@if exist $(subst /,\,$(OUTPUT_PATH)) $(DEL) $(subst /,\,$(OUTPUT_PATH)) >NUL  2>NUL
+	@$(MKDIR) -p $(ERR_PATH)
+
+ifeq ($(BUILD_TYPE), Preprocessing)
+	@$(MKDIR) -p $(PRE_PATH)
+else
+	@$(MKDIR) -p $(LST_PATH)
+	@$(MKDIR) -p $(OBJ_DIR)
+endif
+
+#####################################################################################
+# Rule to link the program
+#####################################################################################
+.PHONY: _Link
+_Link: $(FILES_O)
+	@$(GNUECHO) +++ Linking
+	@$(GNUECHO) $(subst /,\,$(ELF_FILE))
+	@$(LD) $(LFLAGS) $(FILES_O) -Wl,-dT $(LD_FILE) -o $(ELF_FILE)
+
+
+#####################################################################################
+# Rule to run the post build
+#####################################################################################
+.PHONY: _PostBuild
+_PostBuild:
+	@$(GNUECHO) +++ Generate Motorola S19 file
+	@$(GNUECHO) $(SREC_FILE)
+	@$(GCOPY) --srec-forceS3 $(ELF_FILE) -O srec $(SREC_FILE)
+
+	@$(GNUECHO) +++ Generate Intel Hex file
+	@$(GNUECHO) $(HEX_FILE)
+	@$(GCOPY) $(ELF_FILE) -O ihex $(HEX_FILE)
+
+	@$(GNUECHO) +++ Generate extended map file
+	@$(GNUECHO) $(subst /,\,$(MAP_FILE))
+	@$(READELF) --file-header --wide --section-headers --symbols $(ELF_FILE) > $(SYM_FILE)
+
+	@$(GNUECHO) +++ Generate memory dump file
+	@$(GNUECHO) $(DUMP_FILE)
+	@$(GDUMP) -s $(ELF_FILE) > $(DUMP_FILE)
+
+	@$(GNUECHO) +++ Generate assembly list file
+	@$(GNUECHO) $(LIST_FILE)
+	@$(GDUMP) -d -S $(ELF_FILE) > $(LIST_FILE)
+
+
+#####################################################################################
+# Rule to build C file
+#####################################################################################
+$(OBJ_DIR)/%.o : %.c
+	@-$(GNUECHO) +++ compile: $(subst /,\,$<) to $(subst /,\,$@)
+	@-$(CC) $(CFLAGS) -Wa,-adhln=$(LST_PATH)/$(basename $(@F)).lst $(addprefix -I, $(INC_FILES)) -c $< -o $(OBJ_PATH)/$(basename $(@F)).o 2> $(ERR_PATH)/$(basename $(@F)).err
+	@-$(ECHO_ERR) -gcc $(ERR_PATH)/$(basename $(@F)).err
+
+#####################################################################################
+# Rule to build C++ file
+#####################################################################################
+$(OBJ_DIR)/%.o : %.cpp
+	@-$(GNUECHO) +++ compile: $(subst /,\,$<) to $(subst /,\,$@)
+	@-$(CPP) $(CPPFLAGS) -Wa,-adhln=$(LST_PATH)/$(basename $(@F)).lst $(addprefix -I, $(INC_FILES)) -c $< -o $(OBJ_PATH)/$(basename $(@F)).o 2> $(ERR_PATH)/$(basename $(@F)).err
+	@-$(ECHO_ERR) -gcc $(ERR_PATH)/$(basename $(@F)).err
+
+#####################################################################################
+# Rule to build arm file
+#####################################################################################
+$(OBJ_DIR)/%.o : %.arm
+	@-$(GNUECHO) +++ compile: $(subst /,\,$<) to $(subst /,\,$@)
+	@-$(AS) $(ASFLAGS) $(addprefix -I, $(subst /,\,$(INC_FILES))) $< -o $(OBJ_PATH)/$(basename $(@F)).o > $(ERR_PATH)/$(basename $(@F)).err
+	@-$(ECHO_ERR) -gcc $(ERR_PATH)/$(basename $(@F)).err
+
+#####################################################################################
+# Rule to build s file
+#####################################################################################
+$(OBJ_DIR)/%.o : %.s
+	@-$(GNUECHO) +++ compile: $(subst /,\,$<) to $(subst /,\,$@)
+	@-$(AS) $(ASFLAGS) $(addprefix -I, $(subst /,\,$(INC_FILES))) $< -o $(OBJ_PATH)/$(basename $(@F)).o > $(ERR_PATH)/$(basename $(@F)).err
+	@-$(ECHO_ERR) -gcc $(ERR_PATH)/$(basename $(@F)).err
+
+
+#####################################################################################
+# Rule to preprocessing
+#####################################################################################
+.PHONY: _Preprocessing
+_Preprocessing: $(FILES_i)
+
+#####################################################################################
+# Rule to preprocessing a C file
+#####################################################################################
+$(OBJ_DIR)/%.i : %.c
+	@-$(GNUECHO) +++ Preprocessing: $(subst /,\,$<) to $(subst /,\,$@)
+	@-$(CC) $(CFLAGS) $(PFLAGS) -Wa,-adhln=$(LST_PATH)/$(basename $(@F)).lst $(addprefix -I, $(INC_FILES)) -c $< -o $(PRE_PATH)/$(basename $(@F)).i 2> $(ERR_PATH)/$(basename $(@F)).err || true
+	@-$(ECHO_ERR) -gcc $(ERR_PATH)/$(basename $(@F)).err
+
+#####################################################################################
+# Rule to preprocessing a C++ file
+#####################################################################################
+$(OBJ_DIR)/%.i : %.cpp
+	@-$(GNUECHO) +++ Preprocessing: $(subst /,\,$<) to $(subst /,\,$@)
+	@-$(CPP) $(CPPFLAGS) $(PFLAGS) -Wa,-adhln=$(LST_PATH)/$(basename $(@F)).lst $(addprefix -I, $(INC_FILES)) -c $< -o $(PRE_PATH)/$(basename $(@F)).i 2> $(ERR_PATH)/$(basename $(@F)).err || true
+	@-$(ECHO_ERR) -gcc $(ERR_PATH)/$(basename $(@F)).err
+
+#####################################################################################
+# Rule to preprocessing a s file
+#####################################################################################
+$(OBJ_DIR)/%.i : %.s
+	@-$(GNUECHO) +++ Preprocessing: $(subst /,\,$<) to $(subst /,\,$@)
+	@-$(CC) $(CFLAGS) $(PFLAGS) -Wa,-adhln=$(LST_PATH)/$(basename $(@F)).lst $(addprefix -I, $(INC_FILES)) -c $< -o $(PRE_PATH)/$(basename $(@F)).i 2> $(ERR_PATH)/$(basename $(@F)).err || true
+	@-$(ECHO_ERR) -gcc $(ERR_PATH)/$(basename $(@F)).err
+

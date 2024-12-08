@@ -1,0 +1,40 @@
+/*********************************************************************
+*            (c) 1995 - 2018 SEGGER Microcontroller GmbH             *
+*                        The Embedded Experts                        *
+*                           www.segger.com                           *
+**********************************************************************
+
+-------------------------- END-OF-HEADER -----------------------------
+
+File    : ST_STM32F769_Modified_Traceconfig.JLinkScript
+Purpose : Examplescript to modify TracePortWidth and Pin init
+Literature:
+  [1]  J-Link User Guide
+
+Additional information:
+  For more information about public functions that can be implemented in order to customize J-Link actions, please refer to [1]
+*/
+
+/*********************************************************************
+*
+*       OnTraceStart()
+*
+*  Function description
+*    If present, called right before trace is started.
+*    Used to initialize MCU specific trace related things like configuring the trace pins for alternate function.
+*
+*  Return value
+*    >= 0:  O.K.
+*     < 0:  Error
+*
+*  Notes
+*    (1) May use high-level API functions like JLINK_MEM_ etc.
+*    (2) Should not call JLINK_TARGET_Halt(). Can rely on target being halted when entering this function
+*/
+int OnTraceStart(void) {
+
+  JLINK_SYS_Report("*** Start: Initializing trace pins ***");
+
+  JLINK_SYS_Report("*** End: Initializing trace pins ***");
+  return 0;
+}

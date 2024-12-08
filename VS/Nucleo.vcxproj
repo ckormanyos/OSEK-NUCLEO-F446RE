@@ -1,0 +1,152 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="NucleoOsekPreprocessing|Win32">
+      <Configuration>NucleoOsekPreprocessing</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="NucleoOsek|Win32">
+      <Configuration>NucleoOsek</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{2DD01447-1790-43D6-AE32-80564DFAAAE1}</ProjectGuid>
+    <Keyword>MakeFileProj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='NucleoOsek|Win32'" Label="Configuration">
+    <ConfigurationType>Makefile</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='NucleoOsekPreprocessing|Win32'" Label="Configuration">
+    <ConfigurationType>Makefile</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='NucleoOsek|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='NucleoOsekPreprocessing|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='NucleoOsek|Win32'">
+    <NMakeBuildCommandLine>Build.bat Build $(Configuration)</NMakeBuildCommandLine>
+    <NMakeOutput>
+    </NMakeOutput>
+    <NMakeCleanCommandLine>Build.bat Clean $(Configuration)</NMakeCleanCommandLine>
+    <NMakeReBuildCommandLine>Build.bat Rebuild $(Configuration)</NMakeReBuildCommandLine>
+    <NMakePreprocessorDefinitions>__attribute__()=;__GNUC__;osDispatch()=;__EI()=;__DI()=;Ostm_Init()=</NMakePreprocessorDefinitions>
+    <ExecutablePath />
+    <IncludePath />
+    <ReferencePath />
+    <LibraryPath />
+    <LibraryWPath />
+    <SourcePath />
+    <ExcludePath />
+    <IntDir>$(SolutionDir)$(Configuration)\</IntDir>
+    <NMakeIncludeSearchPath>$(SolutionDir)..\Code\Appli;$(SolutionDir)..\Code\Mcal;$(SolutionDir)..\Code\OSEK;$(SolutionDir)..\Code\Services;$(SolutionDir)..\Code\Startup;$(SolutionDir)..\Code\Std;$(SolutionDir)..\Code\OSEK\Doc;$(SolutionDir)..\Code\OSEK\HwPlatform;$(SolutionDir)..\Code\OSEK\HwPlatform\ARM;$(SolutionDir)..\Code\OSEK\HwPlatform\Renesas;$(SolutionDir)..\Code\OSEK\HwPlatform\ARM\ARM11;$(SolutionDir)..\Code\OSEK\HwPlatform\ARM\Cortex-M;$(SolutionDir)..\Code\OSEK\HwPlatform\Renesas\F1x;$(SolutionDir)..\Code\OSEK\HwPlatform\Renesas\F1x\R7F701035;$(SolutionDir)..\Code\OSEK\HwPlatform\Renesas\F1x\R7F701581;$(SolutionDir)..\Code\OSEK\HwPlatform\Renesas\F1x\R7F701035\Cfg;$(SolutionDir)..\Code\OSEK\HwPlatform\Renesas\F1x\R7F701035\Generator;$(SolutionDir)..\Code\OSEK\HwPlatform\Renesas\F1x\R7F701581\Cfg;$(SolutionDir)..\Code\OSEK\HwPlatform\Renesas\F1x\R7F701581\Generator;$(SolutionDir)..\Code\Services\FIFO;$(SolutionDir)..\Code\Services\IPC;$(SolutionDir)..\Code\Services\Log;</NMakeIncludeSearchPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='NucleoOsekPreprocessing|Win32'">
+    <NMakeBuildCommandLine>Build.bat Preprocessing $(Configuration)</NMakeBuildCommandLine>
+    <NMakeOutput />
+    <NMakeCleanCommandLine>Build.bat Clean $(Configuration)</NMakeCleanCommandLine>
+    <NMakeReBuildCommandLine>Build.bat Preprocessing $(Configuration)</NMakeReBuildCommandLine>
+    <NMakePreprocessorDefinitions>__attribute__()=;__GNUC__;osDispatch()=;__EI()=;__DI()=;Ostm_Init()=</NMakePreprocessorDefinitions>
+    <ExecutablePath />
+    <IncludePath />
+    <ReferencePath />
+    <LibraryPath />
+    <LibraryWPath />
+    <SourcePath />
+    <ExcludePath />
+    <IntDir>$(SolutionDir)$(Configuration)\</IntDir>
+    <NMakeIncludeSearchPath>$(SolutionDir)..\Code\Appli;$(SolutionDir)..\Code\Mcal;$(SolutionDir)..\Code\OSEK;$(SolutionDir)..\Code\Services;$(SolutionDir)..\Code\Startup;$(SolutionDir)..\Code\Std;$(SolutionDir)..\Code\OSEK\Doc;$(SolutionDir)..\Code\OSEK\HwPlatform;$(SolutionDir)..\Code\OSEK\HwPlatform\ARM;$(SolutionDir)..\Code\OSEK\HwPlatform\Renesas;$(SolutionDir)..\Code\OSEK\HwPlatform\ARM\ARM11;$(SolutionDir)..\Code\OSEK\HwPlatform\ARM\Cortex-M;$(SolutionDir)..\Code\OSEK\HwPlatform\Renesas\F1x;$(SolutionDir)..\Code\OSEK\HwPlatform\Renesas\F1x\R7F701035;$(SolutionDir)..\Code\OSEK\HwPlatform\Renesas\F1x\R7F701581;$(SolutionDir)..\Code\OSEK\HwPlatform\Renesas\F1x\R7F701035\Cfg;$(SolutionDir)..\Code\OSEK\HwPlatform\Renesas\F1x\R7F701035\Generator;$(SolutionDir)..\Code\OSEK\HwPlatform\Renesas\F1x\R7F701581\Cfg;$(SolutionDir)..\Code\OSEK\HwPlatform\Renesas\F1x\R7F701581\Generator;$(SolutionDir)..\Code\Services\FIFO;$(SolutionDir)..\Code\Services\IPC;$(SolutionDir)..\Code\Services\Log;</NMakeIncludeSearchPath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='NucleoOsek|Win32'">
+    <BuildLog>
+      <Path>$(SolutionDir)..\Bin\$(Configuration)\$(Configuration)_Build.log</Path>
+    </BuildLog>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='NucleoOsekPreprocessing|Win32'">
+    <BuildLog>
+      <Path>$(SolutionDir)..\Bin\$(Configuration)\$(Configuration)_Build.log</Path>
+    </BuildLog>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Code\Appli\main.c" />
+    <ClCompile Include="..\Code\Appli\Rect.cpp" />
+    <ClCompile Include="..\Code\Appli\tasks.c" />
+    <ClCompile Include="..\Code\Mcal\Clock.c" />
+    <ClCompile Include="..\Code\Mcal\Cpu.c" />
+    <ClCompile Include="..\Code\Mcal\math.asm" />
+    <ClCompile Include="..\Code\Mcal\port.c" />
+    <ClCompile Include="..\Code\Mcal\SysTimer.c" />
+    <ClCompile Include="..\Code\OSEK\OsAlarm.c" />
+    <ClCompile Include="..\Code\OSEK\OsCore.c" />
+    <ClCompile Include="..\Code\OSEK\OsEvt.c" />
+    <ClCompile Include="..\Code\OSEK\OsSched.c" />
+    <ClCompile Include="..\Code\OSEK\OsTask.c" />
+    <ClCompile Include="..\Code\OSEK\OsTcb.c" />
+    <ClCompile Include="..\Code\OSEK\HwPlatform\ARM\Cortex-M\OsAsm.s" />
+    <ClCompile Include="..\Code\OSEK\HwPlatform\ARM\Cortex-M\OsHwPltfm.c" />
+    <ClCompile Include="..\Code\OSEK\HwPlatform\ARM\Cortex-M\OsHwSchedPrio.s" />
+    <ClCompile Include="..\Code\OSEK\HwPlatform\Renesas\HwPltfm.c" />
+    <ClCompile Include="..\Code\OSEK\HwPlatform\Renesas\OsAsm.c" />
+    <ClCompile Include="..\Code\OSEK\HwPlatform\Renesas\OsHwSchedPrio.s" />
+    <ClCompile Include="..\Code\OSEK\HwPlatform\Renesas\Ostm.c" />
+    <ClCompile Include="..\Code\OSEK\HwPlatform\Renesas\F1x\R7F701035\Cfg\osGenEIINTx.c" />
+    <ClCompile Include="..\Code\OSEK\HwPlatform\Renesas\F1x\R7F701581\Cfg\osGenEIINTx.c" />
+    <ClCompile Include="..\Code\Services\FIFO\FIFO.c" />
+    <ClCompile Include="..\Code\Services\IPC\IPC.c" />
+    <ClCompile Include="..\Code\Startup\IntVect.c" />
+    <ClCompile Include="..\Code\Startup\nomain.c" />
+    <ClCompile Include="..\Code\Startup\Startup.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Code\Appli\Rect.h" />
+    <ClInclude Include="..\Code\Mcal\Gpio.h" />
+    <ClInclude Include="..\Code\Mcal\scb.h" />
+    <ClInclude Include="..\Code\Mcal\STM32F446RE_Reg.h" />
+    <ClInclude Include="..\Code\OSEK\OsAPIs.h" />
+    <ClInclude Include="..\Code\OSEK\OsGenMac.h" />
+    <ClInclude Include="..\Code\OSEK\OsInternal.h" />
+    <ClInclude Include="..\Code\OSEK\OsTcb.h" />
+    <ClInclude Include="..\Code\OSEK\OsTypes.h" />
+    <ClInclude Include="..\Code\OSEK\Platform_Types.h" />
+    <ClInclude Include="..\Code\OSEK\HwPlatform\ARM\Cortex-M\OsAsm.h" />
+    <ClInclude Include="..\Code\OSEK\HwPlatform\ARM\Cortex-M\OsGenCfg.h" />
+    <ClInclude Include="..\Code\OSEK\HwPlatform\ARM\Cortex-M\OsGenPrioTypes.h" />
+    <ClInclude Include="..\Code\OSEK\HwPlatform\ARM\Cortex-M\OsHwPltfm.h" />
+    <ClInclude Include="..\Code\OSEK\HwPlatform\Renesas\HwPltfm.h" />
+    <ClInclude Include="..\Code\OSEK\HwPlatform\Renesas\OsAsm.h" />
+    <ClInclude Include="..\Code\OSEK\HwPlatform\Renesas\F1x\R7F701035\Cfg\osGenCfg.h" />
+    <ClInclude Include="..\Code\OSEK\HwPlatform\Renesas\F1x\R7F701035\Cfg\osGenPrioTypes.h" />
+    <ClInclude Include="..\Code\OSEK\HwPlatform\Renesas\F1x\R7F701581\Cfg\osGenCfg.h" />
+    <ClInclude Include="..\Code\OSEK\HwPlatform\Renesas\F1x\R7F701581\Cfg\osGenPrioTypes.h" />
+    <ClInclude Include="..\Code\Services\FIFO\FIFO.h" />
+    <ClInclude Include="..\Code\Services\IPC\IPC.h" />
+    <ClInclude Include="..\Code\Std\Platform_Types.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Build\Makefiles\Make_000_Build.gmk" />
+    <None Include="..\Build\Makefiles\Make_001_Paths.gmk" />
+    <None Include="..\Build\Makefiles\Make_002_Tools.gmk" />
+    <None Include="..\Build\Makefiles\Make_003_Flags.gmk" />
+    <None Include="..\Build\Makefiles\Make_004_SourceFiles.gmk" />
+    <None Include="..\Build\Makefiles\Make_005_IncludePaths.gmk" />
+    <None Include="..\Build\Makefiles\Make_006_Rules.gmk" />
+    <None Include="..\Code\Startup\Memory_Map.ld" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
