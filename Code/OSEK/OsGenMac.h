@@ -136,10 +136,10 @@
 
 #define OS_NUMBER_OF_RESOURCE  INVALID_RESOURCE
 
-#define OS_INTERRUPT_BEGIN                                                      
-#define OS_INTERRUPT_CAT1_DEF(IsrFunc,Prio,Type)                                
-#define OS_INTERRUPT_CAT2_DEF(IsrFunc,Prio,Type)                                
-#define OS_INTERRUPT_END                                                        
+#define OS_INTERRUPT_BEGIN
+#define OS_INTERRUPT_CAT1_DEF(IsrFunc,Prio,Type)
+#define OS_INTERRUPT_CAT2_DEF(IsrFunc,Prio,Type)
+#define OS_INTERRUPT_END
 
 #define OS_NUMBER_OF_ISR
 
@@ -160,28 +160,28 @@
 #define OS_TASK_END                                                              
 
 
-#define OS_EVENT_BEGIN                                                           
-#define OS_EVENT_DEF(Event, Mask)                                                
-#define OS_EVENT_END                                                             
+#define OS_EVENT_BEGIN
+#define OS_EVENT_DEF(Event, Mask)
+#define OS_EVENT_END
 
 
 
-#define OS_ALARM_BEGIN                                                           
+#define OS_ALARM_BEGIN
 #define OS_ALARM_DEF(Name,Action,Event,task,Callback)
 #define OS_ALARM_AUTO_DEF(Name,Increment,Cycle,Action,Event,task,Callback)
-#define OS_ALARM_END                                                             
+#define OS_ALARM_END
 
 
 
 #define OS_RESOURCE_BEGIN                                                        
 #define OS_RESOURCE_DEF(Name,CeilingPrio,AuthorizedTasks...)                     
-#define OS_RESOURCE_END                                                          
+#define OS_RESOURCE_END
 
 
 #define OS_INTERRUPT_BEGIN                                                      extern const Isr_t IsrLookupTable[];
 #define OS_INTERRUPT_CAT1_DEF(IsrFunc,Prio,Type)                                extern void IsrFunc(void);
 #define OS_INTERRUPT_CAT2_DEF(IsrFunc,Prio,Type)                                extern ISR(IsrFunc);
-#define OS_INTERRUPT_END                                                         
+#define OS_INTERRUPT_END
 
 #define OS_FE_INTERRUPT_BEGIN                                                   extern const FeIsr_t FeIntLookupTable[];
 #define OS_FE_INTERRUPT_CAT2_DEF(FeIsrFunc)                                     extern ISR(FeIsrFunc);

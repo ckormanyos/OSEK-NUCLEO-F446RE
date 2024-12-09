@@ -40,7 +40,7 @@
   bl.w OS_Dispatcher   /* Call the dispatcher to switch the context */
   mov r13,r0           /* Setup the new stack pointer               */
   pop {r4 - r11, lr}   /* Restore the saved context                 */
-  cpsie i	       /* Unlock the dispatcher                     */
+  cpsie i              /* Unlock the dispatcher                     */
   bx lr
 
   //------------------------------------------------------------------------------------------------------------------
@@ -97,22 +97,20 @@
   .extern OsStoreStackPointer
   .extern OsGetSavedStackPointer
   .extern OsIsrCallDispatch
-  .extern OsRunCat2Isr		
+  .extern OsRunCat2Isr
 
-#ifndef OS_NESTED_INT	
-	cpsid i
-#endif	
-	push {r4 - r11, lr}	     /* Save the context in the stack of the current task                */
-	mov r0,r13                   /* prepare the input parameter for the function OsStoreStackPointer */
-	bl.w OsStoreStackPointer     /* Save the stack pointer of the current task                       */
-	bl.w OsRunCat2Isr            /* Call the ISR (lookup table)                                      */
-	bl.w OsGetSavedStackPointer  /* Restore the stack pointer of the current task                    */
-	bl.w OsIsrCallDispatch       /* Call dispatcher if needed                                        */
-	mov r13,r0                   /* Set the new stack pointer of the active task                     */
-	pop {r4 - r11, lr}           /* Restore the context from the active task                         */
 #ifndef OS_NESTED_INT
-	cpsie i
-#endif	
-	bx lr	
-
-
+  cpsid i
+#endif
+  push {r4 - r11, lr}          /* Save the context in the stack of the current task                */
+  mov r0,r13                   /* prepare the input parameter for the function OsStoreStackPointer */
+  bl.w OsStoreStackPointer     /* Save the stack pointer of the current task                       */
+  bl.w OsRunCat2Isr            /* Call the ISR (lookup table)                                      */
+  bl.w OsGetSavedStackPointer  /* Restore the stack pointer of the current task                    */
+  bl.w OsIsrCallDispatch       /* Call dispatcher if needed                                        */
+  mov r13,r0                   /* Set the new stack pointer of the active task                     */
+  pop {r4 - r11, lr}           /* Restore the context from the active task                         */
+#ifndef OS_NESTED_INT
+  cpsie i
+#endif
+  bx lr

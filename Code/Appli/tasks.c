@@ -7,93 +7,55 @@
 #include"OsAPIs.h"
 #include "Gpio.h"
 
+#include <stdint.h>
 
-//===============================================================================================================================
-// OS TASK : T1
-//===============================================================================================================================
 TASK(T1)
 {
-  static uint32 T1AliveCounter = 0;
-  OsEventMaskType OsWaitEventMask = EVT_BLINK_GREEN_LED_FAST;
-  OsEventMaskType Events = 0;
-  (void)OS_SetRelAlarm(ALARM_BLINK_GREEN_LED_FAST,0,1000);
-
-  for(;;)
-  {
-    if(E_OK == OS_WaitEvent(OsWaitEventMask))
-    {
-      (void)OS_GetEvent((OsTaskType)T1, &Events);
-
-      if((Events & EVT_BLINK_GREEN_LED_FAST) == EVT_BLINK_GREEN_LED_FAST)
-      {
-        OS_ClearEvent(EVT_BLINK_GREEN_LED_FAST);
-
-        __asm("NOP");
-
-        T1AliveCounter++;
-      }
-    }
-    else
-    {
-      OS_TerminateTask(); /* In case of error we switch off the task */
-    }
-  }
-}
-
-//===============================================================================================================================
-// OS TASK : T2
-//===============================================================================================================================
-TASK(T2)
-{
-  static uint32 T2AliveCounter = 0;
-  static uint32 LedPeriod      = 0;
-  OsEventMaskType OsWaitEventMask = EVT_BLINK_GREEN_LED_SLOW;
-  OsEventMaskType Events = 0;
-  (void)OS_SetRelAlarm(ALARM_BLINK_GREEN_LED_SLOW,0,5000);
   LED_GREEN_CFG();
+  LED_GREEN_TOGGLE();
+
+  const OsEventMaskType OsWaitEventMask = (OsEventMaskType) EVT_BLINK_LED;
+
+  (void) OS_SetRelAlarm(ALARM_BLINK_LED, (OsTickType) UINT8_C(0), (OsTickType) UINT16_C(997));
 
   for(;;)
   {
     if(E_OK == OS_WaitEvent(OsWaitEventMask))
     {
-      (void)OS_GetEvent((OsTaskType)T2, &Events);
+      OsEventMaskType Events = (OsEventMaskType) UINT8_C(0);
 
-      if((Events & EVT_BLINK_GREEN_LED_SLOW) == EVT_BLINK_GREEN_LED_SLOW)
+      (void) OS_GetEvent((OsTaskType) T1, &Events);
+
+      if((Events & EVT_BLINK_LED) == EVT_BLINK_LED)
       {
-        OS_ClearEvent(EVT_BLINK_GREEN_LED_SLOW);
+        OS_ClearEvent(EVT_BLINK_LED);
 
-        T2AliveCounter++;
-
-        LedPeriod = (((T2AliveCounter % 2) == 0) ? 500U : 50U);
-
-
-        (void)OS_CancelAlarm(ALARM_BLINK_GREEN_LED_FREQ);
-        (void)OS_SetRelAlarm(ALARM_BLINK_GREEN_LED_FREQ, 0, LedPeriod);
+        LED_GREEN_TOGGLE();
       }
     }
     else
     {
-      OS_TerminateTask(); /* In case of error we switch off the task */
+      OS_TerminateTask();
     }
   }
 }
 
-//===============================================================================================================================
-// ALARM CALLBACK
-//===============================================================================================================================
-ALARMCALLBACK(ToggleTheGreenLed)
+TASK(Idle)
 {
-  LED_GREEN_TOGGLE();
+  for(;;)
+  {
+    __asm("NOP");
+  }
 }
 
 ISR(DummyInt)
 {
   static uint32 NestingCnt = 0;
-  
-  NestingCnt++;
+
+  ++NestingCnt;
 
   //while(1)
   {
-   __asm("NOP");
+    __asm("NOP");
   }
 }
