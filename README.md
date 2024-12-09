@@ -5,13 +5,13 @@ This repository implements an OSEK-like, bare-metal operating system for ARM(R) 
 
 Features include:
 
-OSEK-like OS implementation with support of most common features.
-The sample application runs on the STM32F446-NUCLEO Board.
-Tasks and events interact to produce a blinky LED show featuring a straightforware LED blinky show.
-Use a simple self-written bare-metal startup.
-Power, clock and port initialization.
-1ms timebase derived from the ARM(R) SysTick.
-Implementation in C99 with absolute minimal use of assembly.
-A clear and easy-to-understand build system based on free GNUmake/GCC completes this fun and educational project.
+  - OSEK-like OS implementation with support of most common features.
+  - The sample application runs on the STM32F446-NUCLEO Board.
+  - Tasks and events interact to produce a blinky LED show featuring a straightforware LED blinky show.
+  - Use a simple self-written bare-metal startup.
+  - Power, clock and port initialization.
+  - 1ms timebase derived from the ARM(R) SysTick.
+  - Implementation in C99 with absolute minimal use of assembly.
+  - A clear and easy-to-understand build system based on free GNUmake/GCC completes this fun and educational project.
 
 This repository provides keen insight on writing your own bare metal operating system from scratch on a modern microcontroller using entirely free tools and open standards.
