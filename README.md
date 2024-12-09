@@ -6,7 +6,7 @@ This repository implements an OSEK-like, bare-metal operating system for ARM(R) 
 Features include:
 
   - OSEK-like OS implementation with support of most common features.
-  - The sample application runs on the STM32F446-NUCLEO Board.
+  - The sample application runs on the STM32F446RE-NUCLEO Board.
   - Tasks and events interact to produce a blinky LED show featuring a straightforware LED blinky show.
   - Use a simple self-written bare-metal startup.
   - Power, clock and port initialization.
