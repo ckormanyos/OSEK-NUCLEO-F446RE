@@ -13,7 +13,8 @@
 # 
 #####################################################################################
 
-UTILITY_PATH   := $(SOLUTION_PATH)/Build/Utilities
+BUILD_PATH     := $(SOLUTION_PATH)/Build
+UTILITY_PATH   := $(BUILD_PATH)/Utilities
 OUTPUT_PATH    := $(SOLUTION_PATH)/Bin/$(BUILD_NAME)
 
 SW_PATH        := $(SOLUTION_PATH)/Code
