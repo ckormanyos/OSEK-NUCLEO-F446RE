@@ -82,9 +82,9 @@ typedef union
 #define pSTK_VAL    ((volatile stStkVal* const)  (SYS_TICK_BASE_REG + 0x08))
 #define pSTK_CALIB  ((volatile stStkCalib* const)(SYS_TICK_BASE_REG + 0x0C))
 
-#define AHB_FREQ_MHZ      225U
-#define SYS_TICK_MS(x)    ((unsigned long)(AHB_FREQ_MHZ * x * 100UL) - 1UL)
-#define SYS_TICK_US(x)    ((unsigned long)(AHB_FREQ_MHZ * x) - 1UL)
+#define AHB_FREQ_MHZ      (180U / 8U)
+#define SYS_TICK_US(x)    ((unsigned long)(AHB_FREQ_MHZ * (x)) - 1UL)
+#define SYS_TICK_MS(x)    ((unsigned long)(AHB_FREQ_MHZ * (x) * 1000UL) - 1UL)
 
 #define SYS_TICK_CLKSRC_AHB          1U
 #define SYS_TICK_CLKSRC_AHB_DIV_8    0U
@@ -114,7 +114,7 @@ void SysTickTimer_Stop(void);
 void SysTickTimer_Init(void)
 {
   pSTK_CTRL->u32Register     = 0;
-  pSTK_LOAD->bits.u24RELOAD  = SYS_TICK_MS(500);
+  pSTK_LOAD->bits.u24RELOAD  = SYS_TICK_MS(10);
   pSTK_VAL->u32Register      = 0;
   pSTK_CTRL->bits.u1CLOCKSRC = SYS_TICK_CLKSRC_AHB_DIV_8;
   pSTK_CTRL->bits.u1TICKINT  = SYS_TICK_ENABLE_INT;

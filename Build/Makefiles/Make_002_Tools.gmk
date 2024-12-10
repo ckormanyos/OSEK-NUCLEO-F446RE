@@ -22,8 +22,8 @@ DEL          := del /s/f/q
 READELF      := $(UTILITY_PATH)/readelf/readelf
 ECHO_ERR     := $(UTILITY_PATH)/eprint
 
-
 GCC_ARM      := C:/Compilers/arm-none-eabi_13.3_rel1/bin
+#GCC_ARM      := $(BUILD_PATH)/tools/Util/msys64/usr/local/gcc-13.3.1-arm-none-eabi/bin
 CC           := $(GCC_ARM)/arm-none-eabi-gcc
 CPP          := $(GCC_ARM)/arm-none-eabi-g++
 LD           := $(GCC_ARM)/arm-none-eabi-gcc
