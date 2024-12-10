@@ -102,8 +102,8 @@ typedef union
 #define pSTK_CALIB  ((volatile stStkCalib* const)(SYS_TICK_BASE_REG + 0x0C))
 
 #define AHB_FREQ_MHZ      225U
-#define OS_SYS_TICK_MS(x)    ((unsigned long)(AHB_FREQ_MHZ * x * 1000UL) - 1UL)
-#define OS_SYS_TICK_US(x)    ((unsigned long)(AHB_FREQ_MHZ * x) - 1UL)
+#define OS_SYS_TICK_MS(x)    ((unsigned long)(AHB_FREQ_MHZ * x * 1000UL)/10ul - 1UL)
+#define OS_SYS_TICK_US(x)    ((unsigned long)(AHB_FREQ_MHZ * x)/10ul - 1UL)
 
 #define SYS_TICK_CLKSRC_AHB          1U
 #define SYS_TICK_CLKSRC_AHB_DIV_8    0U

@@ -75,7 +75,7 @@ OS_INTERRUPT_BEGIN
   OS_INTERRUPT_CAT2_DEF(Undefined, 0, NOT_NESTED)     // 12 --> Debug Monitor
   OS_INTERRUPT_CAT2_DEF(Undefined, 0, NOT_NESTED)     // 13 --> Reserved
   OS_INTERRUPT_CAT2_DEF(Undefined, 0, NOT_NESTED)     // 14 --> PendSV
-  OS_INTERRUPT_CAT2_DEF(SysTickTimer, 5, NESTED)  // 15 --> Systick
+  OS_INTERRUPT_CAT2_DEF(SysTickTimer, 5, NESTED)      // 15 --> Systick
   OS_INTERRUPT_CAT1_DEF(OsIsr_DummyIntFunc, 4, NOT_NESTED)     // 16 --> WWDG
   OS_INTERRUPT_CAT2_DEF(Undefined, 0, NOT_NESTED)     // 17 --> PVD
   OS_INTERRUPT_CAT2_DEF(Undefined, 0, NOT_NESTED)     // 18 --> TAMP_STAMP

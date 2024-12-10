@@ -47,8 +47,8 @@ void OS_StartOS(OsAppModeType Mode)
   if(TRUE == OsIsInterruptContext())
   {
     return;
-  }   
-  
+  }
+
   if(OS_NUMBER_OF_TASKS > 0)
   {
     /* INIT TCBs */
@@ -251,7 +251,8 @@ uint32 OS_Dispatcher(uint32 StackPtr)
 //------------------------------------------------------------------------------------------------------------------
 ISR(SysTickTimer)
 {
-  OCB_Cfg.OsSysTickCounter++;
+  ++OCB_Cfg.OsSysTickCounter;
+
   osAlarmsManagement();
 }
 
